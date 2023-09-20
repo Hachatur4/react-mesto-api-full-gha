@@ -1,0 +1,4 @@
+.card__likeBox{
+  display: flex;
+  flex-direction: column;
+}

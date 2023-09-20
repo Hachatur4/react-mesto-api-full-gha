@@ -1,0 +1,10 @@
+.signInPage {
+  display: flex;
+  width: 100vw;
+  height: max-content;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+}

@@ -1,0 +1,13 @@
+.profile__avatar-pencil{
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  background-size: cover;
+  background-image: url(../../../images/Pencil_user_image.svg);
+  z-index: 2;
+  opacity: 0;
+}
+
+.profile__avatar-pencil:hover{
+  opacity: 1;
+}

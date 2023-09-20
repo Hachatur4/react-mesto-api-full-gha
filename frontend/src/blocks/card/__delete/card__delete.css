@@ -1,0 +1,18 @@
+.card__delete {
+  background-image: url(../../../images/card-delete-icon.svg);
+  width: 18px;
+  height: 19px;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.card__delete:hover {
+  opacity: 0.6;
+}

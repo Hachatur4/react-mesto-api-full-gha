@@ -1,0 +1,6 @@
+.header__title-box{
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  align-items: center;
+}
