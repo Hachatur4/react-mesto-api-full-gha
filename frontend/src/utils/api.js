@@ -16,7 +16,7 @@ class Api {
         'Content-Type': this._contentType
       },
     })
-    .then(res => this._checkResStatus(res)) 
+    .then(res => this._checkResStatus(res))
   }
 
   createCard(data){

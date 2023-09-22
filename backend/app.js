@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const helmet = require('helmet');
 const port = 3000;
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
@@ -21,6 +22,15 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 }).then(() => {
   console.log('DB Active');
+});
+
+app.use(helmet());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+  next();
 });
 
 app.use(express.json());
