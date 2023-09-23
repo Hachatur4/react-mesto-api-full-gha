@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const helmet = require('helmet');
+const cors = require('cors');
 const port = 3000;
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
@@ -23,6 +24,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 }).then(() => {
   console.log('DB Active');
 });
+
+app.use(cors());
 
 app.use(helmet());
 

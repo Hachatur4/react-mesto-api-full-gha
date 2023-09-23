@@ -10,7 +10,7 @@ export const register = (password, email) => {
     },
     body: JSON.stringify({
       "password": password,
-      "email": email 
+      "email": email
     })
   })
   .then(res => getResponseData(res))
