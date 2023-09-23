@@ -1,5 +1,5 @@
 
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://api.mesto.hh.nomoredomainsrocks.ru';
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
