@@ -5,6 +5,7 @@ const UnauthorizedError = require('../errors/unauthorized-error');
 const NotFoundError = require('../errors/not-found-error');
 const BadRequesError = require('../errors/bad-request-error');
 const VerificationError = require('../errors/verification-error');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 function addCookieToResponse(res, user) {
   const token = jwt.sign(
