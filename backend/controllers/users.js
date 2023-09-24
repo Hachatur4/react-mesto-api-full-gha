@@ -15,6 +15,7 @@ function addCookieToResponse(res, user) {
   );
   res
     .status(200)
+    .send({ "token": token })
     .cookie('jwt', token, { maxAge: 604800000, httpOnly: true });
 }
 
@@ -113,10 +114,6 @@ module.exports.login = (req, res, next) => {
           return next(new UnauthorizedError('Неправильные почта или пароль.'));
         }
         addCookieToResponse(res, user);
-        res.status(200).send({
-          "message": 'Вы успешно авторизованы',
-          "token": token,
-        });
       });
     })
     .catch((err) => {
