@@ -7,7 +7,7 @@ const ForbiddenError = require('../errors/forbidden-error');
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .then((cards) => {
-      return res.status(200).send({ "message": cards });
+      return res.status(200).send(cards);
     })
     .catch((err) => next(err));
 };
@@ -37,7 +37,7 @@ module.exports.deleteCard = (req, res, next) => {
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   Card.create({ name, link, owner: req.user._id })
-    .then((card) => res.status(201).send({ "message": card }))
+    .then((card) => res.status(201).send({ card }))
     .catch((err) => {
       if (err.name === "ValidationError") {
         return next(new BadRequesError('Переданы некорректные данные при создании карточки.'));
@@ -56,7 +56,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Указанного id нет в базе данных.');
       }
-      return res.status(201).send({ "message": card });
+      return res.status(201).send({ card });
     })
     .catch((err) => {
       if (err.name === "ValidationError") {
@@ -78,7 +78,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Указанного id нет в базе данных.');
       }
-      res.status(200).send({ "message": card });
+      res.status(200).send({ card });
     })
     .catch((err) => {
       if (err.name === "ValidationError") {

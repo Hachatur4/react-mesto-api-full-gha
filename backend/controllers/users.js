@@ -42,7 +42,7 @@ module.exports.getUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Указанного id нет в базе данных.');
       }
-      return res.status(200).send({ "message": user });
+      return res.status(200).send({ user });
     })
     .catch((err) => {
       if (err.name === "CastError") {
@@ -58,7 +58,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Указанного id нет в базе данных.');
       }
-      return res.status(200).send({ "message": user });
+      return res.status(200).send({ user });
     })
     .catch((err) => {
       if (err.name === "CastError") {
@@ -126,7 +126,7 @@ module.exports.updateUserInfo = (req, res, next) => {
   const { name, about } = req.body;
 
   User.findByIdAndUpdate(req.user._id, { name, about }, { new: true, runValidators: true })
-    .then((user) => res.status(200).send({ "message": user }))
+    .then((user) => res.status(200).send({ user }))
     .catch((err) => {
       if (err.name === "ValidationError") {
         return next(new BadRequesError('Переданы некорректные данные при создании пользователя.'));
@@ -141,7 +141,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
   const { avatar } = req.body;
 
   User.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
-    .then((user) => res.status(200).send({ "message": user }))
+    .then((user) => res.status(200).send({ user }))
     .catch((err) => {
       if (err.name === "ValidationError") {
         return next(new BadRequesError('Переданы некорректные данные при создании пользователя.'));
