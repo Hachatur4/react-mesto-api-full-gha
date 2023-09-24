@@ -48,4 +48,4 @@ function getResponseData(res) {
       return Promise.reject(`Ошибка: ${res.status}`); 
   }
   return res.json();
-} 
+}

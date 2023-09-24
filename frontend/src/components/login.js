@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth.js';
 
-function Login({handleLoginAndGetMail}) {
+function Login({handleLoginAndGetMail, setCurrentUser}) {
 
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
@@ -28,6 +28,7 @@ function Login({handleLoginAndGetMail}) {
           localStorage.setItem('jwt', res.token);
           setEmail('')
           setPassword('')
+          setCurrentUser(res.user)
           handleLoginAndGetMail(email)
           navigate('/cards', {replace: true});
         } 

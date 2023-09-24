@@ -16,7 +16,7 @@ function addCookieToResponse(res, user) {
   res
     .status(200)
     .cookie('jwt', token, { maxAge: 604800000, httpOnly: true })
-    .send({ token });
+    .send({ token, user });
 }
 
 function usersPasswordHandler(pass) {

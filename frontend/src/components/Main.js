@@ -14,7 +14,6 @@ function Main ({
 }) {
 
   const currentUser = React.useContext(CurrentUserContext);
-  
   return (
       <main className="content">
       <section className="profile">
@@ -23,16 +22,16 @@ function Main ({
             <span className="profile__avatar-pencil"></span>
             <img
               className="profile__avatar-image"
-              src={currentUser.avatar}
+              src={currentUser.user.avatar}
               alt="Изображение профиля"
             />
           </div>
           <div className="profile__info">
             <div className="profile__name-edit">
-              <h1 className="profile-content profile__name">{currentUser.name}</h1>
+              <h1 className="profile-content profile__name">{currentUser.user.name}</h1>
               <button type="button" className="profile__edit-button" onClick={onEditProfile}></button>
             </div>
-            <p className="profile-content profile__job">{currentUser.about}</p>
+            <p className="profile-content profile__job">{currentUser.user.about}</p>
           </div>
         </div>
         <button type="button" className="profile__add-button"  onClick={onAddPlace}></button>

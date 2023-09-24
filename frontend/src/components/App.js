@@ -50,9 +50,10 @@ function App() {
       auth.checkToken(jwt)
         .then((res) => {
           if (res){
-            setUserEmail(res.data.email)
-            setLoggedIn(true);
+            setUserEmail(res.user.email)
+            setCurrentUser(res)
             navigate("/cards", {replace: true})
+            setLoggedIn(true);
           }
         })
         .catch((err)=> console.log(`catch: ${err}`))
@@ -202,7 +203,8 @@ function App() {
           } />
           <Route path="/login" element={
             <Login
-            handleLoginAndGetMail={handleLoginAndGetMail}
+              handleLoginAndGetMail={handleLoginAndGetMail}
+              setCurrentUser={setCurrentUser}
             />
           } />
           <Route path="*" element={loggedIn ? <Navigate to="/cards" replace /> : <Navigate to="/login" replace />} />
