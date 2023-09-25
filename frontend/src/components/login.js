@@ -29,6 +29,7 @@ function Login({handleLoginAndGetMail, setLoggedIn, setCurrentUser}) {
           setEmail('')
           setPassword('')
           setCurrentUser(res.user)
+          setLoggedIn(true)
           handleLoginAndGetMail(email)
           navigate('/cards', {replace: true});
         }
