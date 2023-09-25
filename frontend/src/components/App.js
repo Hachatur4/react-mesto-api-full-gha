@@ -80,11 +80,12 @@ function App() {
   useEffect(() => {
     if(loggedIn){
       api.getAppInfo()
-      .then(([cards, userData])=>{
-        setCards(cards)
-        setCurrentUser(userData)
-      })
-      .catch((err)=> console.log(`catch: ${err}`))
+        .then(([cards, userData])=>{
+          setCards(cards)
+          setCurrentUser(userData)
+          navigate('/cards', {replace: true});
+        })
+        .catch((err)=> console.log(`catch: ${err}`))
     }
   },[loggedIn]);
 

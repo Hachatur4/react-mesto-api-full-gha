@@ -12,11 +12,11 @@ class Api {
   getInitialCards() {
     return fetch(`${this._options.baseUrl}/cards`, {
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.jwt}`,
         'Content-Type': this._contentType
       },
     })
-    .then(res => this._checkResStatus(res))
+    .then(res =>this._checkResStatus(res))
   }
 
   createCard(data){
@@ -37,7 +37,7 @@ class Api {
   getUserInfo(){
     return fetch(`${this._options.baseUrl}/users/me`, {
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.jwt}`,
         'Content-Type': this._contentType
       },
     })

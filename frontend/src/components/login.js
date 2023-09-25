@@ -1,12 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth.js';
 
 function Login({handleLoginAndGetMail, setLoggedIn, setCurrentUser}) {
 
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
-  const navigate = useNavigate()
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
@@ -25,13 +23,12 @@ function Login({handleLoginAndGetMail, setLoggedIn, setCurrentUser}) {
       .then((res) => {
         if(!res) throw new Error('Неправильное имя пользователя или пароль');
         if (res.token){
-          localStorage.setItem('jwt', res.token);
+          localStorage.setItem('jwt', res.token)
           setEmail('')
           setPassword('')
           setCurrentUser(res.user)
           setLoggedIn(true)
           handleLoginAndGetMail(email)
-          navigate('/cards', {replace: true});
         }
       })
       .catch((err)=>{
