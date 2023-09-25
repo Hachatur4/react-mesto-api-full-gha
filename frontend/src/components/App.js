@@ -113,17 +113,19 @@ function App() {
   function handleCardLike(card){
       api.putLike(card._id)
       .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        setCards((state) => state.map((c) => c._id === card._id ? newCard.card : c));
       })
       .catch((err)=> console.log(`catch: ${err}`))
   }
+
   function handleCardLikeDelete(card){
     api.deleteLike(card._id)
     .then((newCard) => {
-      setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+      setCards((state) => state.map((c) => c._id === card._id ? newCard.card : c))
     })
     .catch((err)=> console.log(`catch: ${err}`))
   }
+
 
   function handleCardDelete(card){
     api.deleteCard(card._id)
@@ -152,9 +154,11 @@ function App() {
   }
 
   function handleAddPlaceSubmit (cardData){
+    console.log(cardData)
     api.createCard(cardData)
     .then((newCard) => {
-      setCards([newCard, ...cards]);
+      console.log(newCard)
+      setCards([newCard.card, ...cards]);
       closeAllPopups()
     })
     .catch((err)=> console.log(`catch: ${err}`))
@@ -204,7 +208,7 @@ function App() {
           <Route path="/login" element={
             <Login
               handleLoginAndGetMail={handleLoginAndGetMail}
-              setCurrentUser={setCurrentUser}
+              setLoggedIn={setLoggedIn}
             />
           } />
           <Route path="*" element={loggedIn ? <Navigate to="/cards" replace /> : <Navigate to="/login" replace />} />
