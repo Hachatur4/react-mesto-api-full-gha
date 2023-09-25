@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const helmet = require('helmet');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 const port = 3000;
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
@@ -23,6 +24,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 }).then(() => {
   console.log('DB Active');
+});
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 });
 
 app.use(cors());

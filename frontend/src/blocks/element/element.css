@@ -1,5 +1,6 @@
 .element{
   width: 900px;
+  min-height: 100vh;
   margin: 47px 0 0;
   display: grid;
   gap: 20px;

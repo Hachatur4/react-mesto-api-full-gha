@@ -78,11 +78,13 @@ function App() {
   }
 
   useEffect(() => {
+    console.log('ok')
     if(loggedIn){
       api.getAppInfo()
       .then(([cards, userData])=>{
         setCards(cards)
         setCurrentUser(userData)
+        console.log(userData)
       })
       .catch((err)=> console.log(`catch: ${err}`))
     }
@@ -209,6 +211,7 @@ function App() {
             <Login
               handleLoginAndGetMail={handleLoginAndGetMail}
               setLoggedIn={setLoggedIn}
+              setCurrentUser={setCurrentUser}
             />
           } />
           <Route path="*" element={loggedIn ? <Navigate to="/cards" replace /> : <Navigate to="/login" replace />} />

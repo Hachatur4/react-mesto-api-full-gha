@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth.js';
 
-function Login({handleLoginAndGetMail, setLoggedIn}) {
+function Login({handleLoginAndGetMail, setLoggedIn, setCurrentUser}) {
 
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
@@ -23,21 +23,23 @@ function Login({handleLoginAndGetMail, setLoggedIn}) {
     }
     auth.authorize(email, password)
       .then((res) => {
+        console.log(res)
         if(!res) throw new Error('Неправильное имя пользователя или пароль');
         if (res.token){
           localStorage.setItem('jwt', res.token);
           setEmail('')
           setPassword('')
-          setLoggedIn(true)
+          setCurrentUser(res.user)
+          /*setLoggedIn(true)*/
           handleLoginAndGetMail(email)
           navigate('/cards', {replace: true});
-        } 
+        }
       })
       .catch((err)=>{
         console.log(err.message)
       })
   }
-  
+
   return (
       <div className="signInPage signInPage_opened">
         <div className="signIn__container">
