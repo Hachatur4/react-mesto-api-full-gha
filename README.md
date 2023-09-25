@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.111.146
+IP-адрес <158.160.111.146>
 
 Frontend https://mesto.hh.nomoredomainsrocks.ru
 
