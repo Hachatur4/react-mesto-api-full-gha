@@ -78,13 +78,11 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('ok')
     if(loggedIn){
       api.getAppInfo()
       .then(([cards, userData])=>{
         setCards(cards)
         setCurrentUser(userData)
-        console.log(userData)
       })
       .catch((err)=> console.log(`catch: ${err}`))
     }

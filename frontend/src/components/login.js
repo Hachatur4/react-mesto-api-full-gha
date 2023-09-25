@@ -23,14 +23,12 @@ function Login({handleLoginAndGetMail, setLoggedIn, setCurrentUser}) {
     }
     auth.authorize(email, password)
       .then((res) => {
-        console.log(res)
         if(!res) throw new Error('Неправильное имя пользователя или пароль');
         if (res.token){
           localStorage.setItem('jwt', res.token);
           setEmail('')
           setPassword('')
           setCurrentUser(res.user)
-          /*setLoggedIn(true)*/
           handleLoginAndGetMail(email)
           navigate('/cards', {replace: true});
         }
